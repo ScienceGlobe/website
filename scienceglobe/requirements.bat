@@ -13,6 +13,7 @@ echo ##   ##   ##  ##    ##      ##   #  ##   ##   ##  ##   ##   #            ##
 echo  #####     ####    ####    #######  ##   ##    ####   #######             #####  #######   #####   ######   #######
 echo
 echo
+pause
 echo Science Globe: Instalando Python e bibliotecas necessárias...
 
 rem Verifica se o Python está instalado
