@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Autor: {{forumpost.author}}</h1>
+    
+    <h3>Bio</h3>
+    
+    <p>{{forumpost.author.bio}}</p>
+    
+    
+
+    {% if forumpost_list %}
+    <h3>Blogs list</h3>
+    <ul>
+
+      {% for forumpost in forumpost_list %}
+      <li>
+        <a href="{{ forumpost.get_absolute_url }}">{{ forumpost.name }}</a> ({{forumpost.post_date}})</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>Este autor ainda nao postou nada.</p>
+    {% endif %}       
+{% endblock %}

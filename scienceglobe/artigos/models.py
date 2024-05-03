@@ -36,7 +36,7 @@ class Artigo(models.Model):
     # Foreign Key usado pois um artigo so pode ter um autor, mas um autor pode ter varios artigos.
     # Autor como string pois ainda nao foi especificado.
 
-    Texto = models.TextField(
+    texto = models.TextField(
         max_length=4000, help_text="Insira o texto do artigo")
 
     
@@ -44,7 +44,6 @@ class Artigo(models.Model):
         Tipo, on_delete=models.RESTRICT, help_text="Selecione o tipo do artigo")
     # Foreign Key usado pois um artigo so pode ter um tipo, mas um tipo pode ter varios artigos.
     # Classe Tipo ja foi definida entao especificamos o objeto.
-
     def __str__(self):
         return self.title
 
@@ -55,7 +54,6 @@ class Autor(models.Model):
     """Modelo representando um Autor."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    nascimento = models.DateField(null=True, blank=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']
