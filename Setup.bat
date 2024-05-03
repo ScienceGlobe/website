@@ -107,15 +107,14 @@ pause
 
 echo Science Globe: Fazendo a validação dos arquivos...
 
-py manage.py makemigrations
-py manage.py migrate
+py scienceglobe/manage.py makemigrations
+py scienceglobe/manage.py migrate
 
 echo Science Globe: Validação realizada com sucesso!
 
-rem Inicia o servidor Django
-echo.
+
 echo Science Globe: Iniciando o servidor Django...
-py manage.py runserver
+py scienceglobe/manage.py runserver
 pause
 
 exit
