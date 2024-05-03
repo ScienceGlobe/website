@@ -18,7 +18,7 @@ Para executar o ScienceGlobe localmente, siga estas etapas:
 1. Certifique-se de ter o Docker instalado em seu sistema.
 
 2. Clone este repositório para o seu ambiente de desenvolvimento:
-- (https://github.com/NULL5506/scienceglobe.git)
+- (https://github.com/ScienceGlobe/website.git)
 3. Navegue até o diretório do projeto:
 - 'cd scienceglobe'
 4. Inicie os contêineres Docker usando o Docker Compose:
