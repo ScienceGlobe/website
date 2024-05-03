@@ -105,6 +105,13 @@ call :UpdateProgressBar
 echo Science Globe: Todas as bibliotecas foram instaladas com sucesso!
 pause
 
+echo Science Globe: Fazendo a validação dos arquivos...
+
+py manage.py makemigrations
+py manage.py migrate
+
+echo Science Globe: Validação realizada com sucesso!
+
 rem Inicia o servidor Django
 echo.
 echo Science Globe: Iniciando o servidor Django...
