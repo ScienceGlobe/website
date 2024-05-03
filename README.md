@@ -12,7 +12,15 @@ Banco de Dados: O ScienceGlobe utiliza o PostgreSQL como banco de dados para arm
 
 Conteinerização: O projeto é contêinerizado usando Docker, uma plataforma que permite empacotar, distribuir e executar aplicativos em contêineres. O Docker simplifica o processo de desenvolvimento, implantação e gerenciamento de aplicativos, garantindo a consistência e a portabilidade do ambiente de execução.
 
-### Como Executar o Projeto
+
+### Como Executar Localmente 
+1. Baixe a ultima release
+2. Execute o arquivo setup.bat
+3. Siga o passo a passo dentro do cmd aberto
+4. Acesse o ScienceGlobe em seu navegador web:
+- (http://localhost:8000)
+
+### Como Executar o Projeto Via Git
 Para executar o ScienceGlobe localmente, siga estas etapas:
 
 1. Certifique-se de ter o Docker instalado em seu sistema.
