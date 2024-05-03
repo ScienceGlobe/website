@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Todos os Posts</h1>
+
+    {% if forumpost_list %}
+    <ul>
+
+      {% for forumpost in forumpost_list %}
+      <li>
+        <a href="{{forumpost.get_absolute_url}}">{{ forumpost.name }}</a> ({{forumpost.post_date}}) — <a href="">{{ forumpost.author }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>Não há Foruns.</p>
+    {% endif %}       
+{% endblock %}

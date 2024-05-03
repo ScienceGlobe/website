@@ -1,12 +1,11 @@
 from django.db import models
 
-from django.db import models
 
 # Create your models here.
 
 from datetime import date
-from django.urls import reverse #Used to generate URLs by reversing the URL patterns
-from django.contrib.auth.models import User #ForumPost author or commenter
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 
@@ -19,7 +18,7 @@ class AutorPost(models.Model):
         ordering = ["user","bio"]
 
     def get_absolute_url(self):
-        return reverse('forumposts-by-author', args=[str(self.id)])
+        return reverse('forum_list_by_author', args=[str(self.id)])
 
     def __str__(self):
         return self.user.username

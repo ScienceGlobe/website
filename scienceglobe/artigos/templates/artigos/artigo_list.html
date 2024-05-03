@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Todos os Artigos</h1>
+  {% if artigo_list %}
+    <ul>
+      {% for artigo in artigo_list %}
+      <li>
+        <a href="{{artigo.get_absolute_url}}">{{ artigo.title }}</a>({{artigo.autor}})
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Não há nenhum artigo disponivel.</p>
+  {% endif %}
+{% endblock %}

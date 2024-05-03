@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ artigo.title }}</h1>
+
+  <p><strong>Por:</strong> <a href="">{{ artigo.autor }}</a></p>
+  <!-- author detail link not yet defined -->
+  <p><strong>Tipo: </strong> <a href="">{{ artigo.tipo }}</a></p>
+  <div class="text-wrap" style="width: 80rem;"><strong></strong>{{artigo.texto}}</div>
+{% endblock %}
