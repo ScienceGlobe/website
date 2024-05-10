@@ -67,8 +67,6 @@ class Noticia(models.Model):
 
     def get_absolute_url(self):
         return reverse('noticia-detail', args=[str(self.id)])
-
-    
     
 class NoticiaWeb(models.Model):
 
@@ -81,4 +79,3 @@ class NoticiaWeb(models.Model):
     
     def get_absolute_url(self):
         return reverse('noticiaweb-detail', args=[str(self.id)])
-

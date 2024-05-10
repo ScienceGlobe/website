@@ -12,7 +12,6 @@ def home_view(request, *args,**kwargs):
 
 class NoticiasView(ListView):
     model = NoticiaWeb
-
     context_object_name = 'noticiaweb_list'
 
 class NoticiaDetailView(DetailView):
