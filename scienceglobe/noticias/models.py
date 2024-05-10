@@ -67,3 +67,18 @@ class Noticia(models.Model):
 
     def get_absolute_url(self):
         return reverse('noticia-detail', args=[str(self.id)])
+
+    
+    
+class NoticiaWeb(models.Model):
+
+    titulo = models.CharField(max_length=100)
+    link = models.URLField()
+    corpo = models.TextField(max_length=5000)
+
+    def __str__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('noticiaweb-detail', args=[str(self.id)])
+

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Todas as Notícias</h1>
+  {% if noticiaweb_list %}
+    <ul>
+      {% for noticiaweb in noticiaweb_list %}
+      <li>
+        <a href="{{noticiaweb.get_absolute_url }}">{{ noticiaweb.titulo }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Não há nenhuma notícia disponivel.</p>
+  {% endif %}
+{% endblock %}

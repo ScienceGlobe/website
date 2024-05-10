@@ -101,6 +101,12 @@ call :UpdateProgressBar
 pip install webencodings==0.5.1 >nul
 set /a "progress+=1"
 call :UpdateProgressBar
+pip install requests >nul
+set /a "progress+=1"
+call :UpdateProgressBar
+pip install beautifulsoap4 >nul
+set /a "progress+=1"
+call :UpdateProgressBar
 
 echo Science Globe: Todas as bibliotecas foram instaladas com sucesso!
 pause
