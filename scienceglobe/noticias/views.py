@@ -16,5 +16,4 @@ class NoticiasView(ListView):
 
 class NoticiaDetailView(DetailView):
     model = NoticiaWeb
-    scrape_noticias()
     template_name = 'noticias/noticiaweb_detail.html'

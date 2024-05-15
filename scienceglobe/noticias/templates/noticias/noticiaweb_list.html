@@ -1,16 +1,79 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Todas as Notícias</h1>
+
+  <style>
+    .center {
+      position: absolute;
+      top: 10%;
+      left: 14.5%;
+      transform: translate(-50%, -50%);
+    }
+    .background-rectangle {
+      /* Define as dimensões e a cor do retângulo */
+      position: fixed;
+      top: 20%;
+      left: 0;
+      width: 100%;
+      height: 10px; /* Altura máxima de 10px */
+      background-color: #b3c8ff;
+      z-index: -1; /* Garante que o retângulo fique atrás do conteúdo */
+    }
+    .rounded-square {
+      width: 80px;
+      height: 80px;
+      background-color: #b3c8ff;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px; /* Espaçamento entre a bola e o texto */
+      position: absolute;
+      top: 10%; /* Posição vertical no meio */
+      left: 7.5%; /* Posição à direita do texto */
+      transform: translate(-50%, -50%);
+      overflow: hidden; /* Para garantir que a imagem fique dentro do círculo */
+    }
+    .right-image {
+      width: 80px;
+      height: 80px;
+      display: inline-block;
+      margin-left: 10px; /* Espaçamento entre a bola e a imagem à direita */
+      position: absolute;
+      top: 10%; /* Mesma altura que a bola verde */
+      right: 7.5%; /* Posição à direita da bola verde */
+      transform: translate(-50%, -50%);
+    }
+    .no-news-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #fff;
+    }
+  </style>
+  <div class="text-center">
+    <h1 class="center">
+      Notícias
+    </h1>
+    <div class="rounded-square">
+      <img src="scienceglobe/images/2.png" alt="Imagem de noticias">
+    </div> <!-- Bola verde -->
+    <div class="right-image">
+      <img src="scienceglobe/images/logo.png" alt="logo imagem">
+    </div> <!-- Imagem à direita -->
+  </div>
+
   {% if noticiaweb_list %}
-    <ul>
-      {% for noticiaweb in noticiaweb_list %}
+  <ul>
+    {% for noticiaweb in noticiaweb_list %}
       <li>
         <a href="{{noticiaweb.get_absolute_url }}">{{ noticiaweb.titulo }}</a>
       </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>Não há nenhuma notícia disponivel.</p>
-  {% endif %}
+    {% endfor %}
+  </ul>
+{% else %}
+  <!-- Aviso de ausência de notícias -->
+  <p class="no-news-message">Não há nenhuma notícia disponível.</p>
+{% endif %}
+</div>
 {% endblock %}

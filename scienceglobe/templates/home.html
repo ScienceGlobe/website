@@ -1,14 +1,54 @@
 {% extends "base.html" %}
 
-{%block content%}
-<h1>Scienceglobe</h1>
-  <h2>bem vindo mano</h2>
-  <p>temos isso aqui ó:</p>
-  <ul>
-    <li><strong><a href="">Artigos:</a></strong> {{ num_artigos }}</li>
-    <li><strong><a href="">Noticias:</a></strong> {{ num_noticias }}</li>
-    <li><strong><a href="">Autores:</a></strong> {{ num_autores }}</li>
-    <li><strong><a href="">Foruns:</a></strong> {{ num_foruns }}</li>
-  </ul>
+{% block content %}
+  <style>
+    .rounded-square {
+      border-radius: 20px; /* Define o raio da borda para arredondar os cantos */
+    }
+  </style>
 
-{%endblock%}
+  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -750%);">
+    <h1>Scienceglobe</h1>
+  </div>
+  <div class="container d-flex justify-content-center align-items-center" style="height: 100vh; position: relative;">
+    <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 100px; position: relative;" class="rounded-square">
+      <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #41c568; position: relative;">
+        <p style="position: relative; top: -50px; left: 20%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;">Artigos</p>
+        <div style="width: 80px; height: 80px; background-color: #41c568; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
+          <img src="artigos.png" alt="Artigos" style="width: 100%; height: 100%; border-radius: 50%;">
+        </div>
+        <p style="position: absolute; top: 50px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 100px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 150px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 200px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 250px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+      </div>
+    </div>
+    <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 100px; position: relative;" class="rounded-square">
+      <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #b3c8ff; position: relative;">
+        <p style="position: relative; top: -50px; left: 20%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;">Notícias</p>
+        <div style="width: 80px; height: 80px; background-color: #b3c8ff; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
+          <img src="noticias.png" alt="Notícias" style="width: 100%; height: 100%; border-radius: 50%;">
+        </div>
+        <p style="position: absolute; top: 50px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 100px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 150px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 200px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 250px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+      </div>
+    </div>
+    <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 320px; position: relative;" class="rounded-square">
+      <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #53e2e1; position: relative;">
+        <p style="position: relative; top: -50px; left: 20%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;">Fóruns</p>
+        <div style="width: 80px; height: 80px; background-color: #53e2e1; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
+          <img src="foruns.png" alt="Fóruns" style="width: 100%; height: 100%; border-radius: 50%;">
+        </div>
+        <p style="position: absolute; top: 50px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 100px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 150px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 200px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+        <p style="position: absolute; top: 250px; left: calc(15% - 30px); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 20px;">AAA</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
