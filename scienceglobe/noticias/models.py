@@ -70,8 +70,8 @@ class Noticia(models.Model):
     
 class NoticiaWeb(models.Model):
 
-    titulo = models.CharField(max_length=100)
-    link = models.URLField()
+    title = models.CharField(max_length=100)
+    genero = models.ForeignKey(Genero, on_delete=models.RESTRICT, null=True)
     corpo = models.TextField(max_length=5000)
 
     def __str__(self):

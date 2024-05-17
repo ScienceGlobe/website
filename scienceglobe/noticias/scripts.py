@@ -1,11 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
-from .models import NoticiaWeb
+from .models import NoticiaWeb, Genero
 
-def scrape_noticias():
-    url = "https://g1.globo.com/"
+def scrape_economia():
+    url = "https://g1.globo.com/economia"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
+    genero_economia, _ = Genero.objects.get_or_create(name="Economia")
+
     for noticia in soup.find_all('div', class_='feed-post-body'):
         
     
@@ -20,6 +22,6 @@ def scrape_noticias():
         for element in corpo_elements:
             corpo += element.get_text().strip() + "\n"
 
-        NoticiaWeb.objects.create(titulo=titulo, link=link, corpo=corpo)
+        NoticiaWeb.objects.create(title=titulo, genero=genero_economia, corpo=corpo)
 
             

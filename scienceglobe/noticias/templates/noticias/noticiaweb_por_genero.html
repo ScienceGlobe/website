@@ -78,11 +78,11 @@
     </div>
 
     <div class="news-container">
-      {% if noticiaweb_list %}
+      {% if noticias %}
         <ul>
-          {% for noticiaweb in noticiaweb_list %}
+          {% for noticia in noticias %}
             <li class="news-message">
-              <a href="{{ noticiaweb.get_absolute_url }}">{{ noticiaweb.title }}</a>
+              <a href="{{ noticia.get_absolute_url }}">{{ noticia.title }}</a>
             </li>
           {% endfor %}
         </ul>
