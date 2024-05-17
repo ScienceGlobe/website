@@ -1,10 +1,7 @@
 {% extends "base.html" %}
-
-
-{% block content %}
 {% load static %}
+{% block content %}
   <style>
-    /* Estilos CSS existentes permanecem inalterados */
     .center {
       position: absolute;
       top: 10%;
@@ -25,23 +22,20 @@
       height: 80px;
       background-color: #53e2e1;
       border-radius: 50%;
-      display: inline-block;
-      margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
       top: 10%;
       left: 7.5%;
       transform: translate(-50%, -50%);
       overflow: hidden;
     }
-    .right-image {
-      width: 80px;
-      height: 80px;
-      display: inline-block;
-      margin-left: 10px;
-      position: absolute;
-      top: 10%;
-      right: 7.5%;
-      transform: translate(-50%, -50%);
+    .img-rounded-square {
+      width: 80%;
+      height: auto;
+      object-fit: cover;
+      object-position: center;
     }
     .no-forum-message {
       position: absolute;
@@ -53,28 +47,38 @@
     }
     .forum-container {
       position: absolute;
-      top: 50%; /* Posiciona o contêiner verticalmente no meio */
-      left: 50%; /* Centraliza o contêiner horizontalmente */
-      transform: translate(-50%, -50%); /* Centraliza vertical e horizontalmente */
-      width: 80%; /* Largura do contêiner */
-      max-width: 600px; /* Largura máxima do contêiner */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
     }
     .forum-message {
-      /* Estilos para cada mensagem do fórum */
-      background-color: #333436; /* Cor de fundo */
-      border-radius: 10px; /* Borda arredondada */
-      margin-bottom: 20px; /* Espaço entre as mensagens */
-      padding: 20px; /* Preenchimento interno */
+      background-color: #333436;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .logo-image {
+      position: fixed;
+      top: 10%;
+      left: 90%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .logo-image img {
+      max-width: 100%;
+      height: auto;
     }
   </style>
 
   <div class="text-center">
     <h1 class="center">Fóruns</h1>
     <div class="rounded-square">
-      <img src="" alt="Imagem de forum"/>
+      <img src="{% static 'images/3.png' %}" alt="Imagem de forum" class="img-rounded-square">
     </div>
-    <div class="right-image">
-      <img src="" alt="logo imagem"/>
+    <div class="logo-image">
+      <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
     </div>
   </div>
 
@@ -90,7 +94,6 @@
     {% else %}
       <p class="no-forum-message">Não há Foruns.</p>
     {% endif %}
-    
   </div>
   <div>
     {% if user.is_authenticated %}
