@@ -18,7 +18,7 @@ class AutorPost(models.Model):
         ordering = ["user","bio"]
 
     def get_absolute_url(self):
-        return reverse('forum_list_by_author', args=[str(self.id)])
+        return reverse('forumpost-by-author', args=[str(self.id)])
 
     def __str__(self):
         return self.user.username
@@ -27,10 +27,10 @@ class AutorPost(models.Model):
 class ForumPost(models.Model):
     """Modelo representando um Post no Forum."""
     name = models.CharField(max_length=200)
-    author = models.ForeignKey(AutorPost, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
       # Foreign Key usado pois um post no forum pode ter apenas um autor, mas usuarios podem ter varios posts no Forum.
     description = models.TextField(max_length=2000, help_text="Insira o texto do seu post")
-    post_date = models.DateField(default=date.today)
+    post_date = models.DateField(auto_now_add=True)
     
     class Meta:
         ordering = ["-post_date"]
@@ -50,7 +50,7 @@ class ForumPostComment(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
       # Foreign Key used because ForumPostComment can only have one author/User, but users can have multiple comments
     post_date = models.DateTimeField(auto_now_add=True)
-    ForumPost= models.ForeignKey(ForumPost, on_delete=models.CASCADE)
+    ForumPost= models.ForeignKey(ForumPost, null=True ,on_delete=models.CASCADE)
     
     class Meta:
         ordering = ["post_date"]

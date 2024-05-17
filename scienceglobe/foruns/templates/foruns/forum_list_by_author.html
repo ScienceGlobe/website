@@ -1,16 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Autor: {{forumpost.author}}</h1>
+    <h1>Autor: {{author}}</h1>
     
-    <h3>Bio</h3>
-    
-    <p>{{forumpost.author.bio}}</p>
-    
-    
-
     {% if forumpost_list %}
-    <h3>Blogs list</h3>
+    <h3>Lista de fóruns criados por {{pk.username}}</h3>
     <ul>
 
       {% for forumpost in forumpost_list %}

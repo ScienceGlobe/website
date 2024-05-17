@@ -1,10 +1,12 @@
 from django.views.generic import ListView, DetailView
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import ForumPost, ForumPostComment, AutorPost
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from .forms import ForumPostForm
 
 # Create your views here.
 
@@ -23,12 +25,12 @@ class ForumListbyAuthorView(ListView):
     
     def get_queryset(self):
         id = self.kwargs['pk']
-        target_author=get_object_or_404(AutorPost, pk = id)
-        return ForumPost.objects.filter(author=target_author)
+        author=get_object_or_404(User, pk = id)
+        return ForumPost.objects.filter(author=author)
         
     def get_context_data(self, **kwargs):
         context = super(ForumListbyAuthorView, self).get_context_data(**kwargs)
-        context['Autor do post'] = get_object_or_404(AutorPost, pk = self.kwargs['pk'])
+        context['author'] = get_object_or_404(User, pk = self.kwargs['pk'])
         return context
     
 class ForumPostDetailView(DetailView):
@@ -43,15 +45,28 @@ class ForumCommentCreate(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(ForumCommentCreate, self).get_context_data(**kwargs)
-        context["forum"] = get_object_or_404(ForumPost, pk = self.kwargs['pk']) 
+        context["forumpost"] = get_object_or_404(ForumPost, pk = self.kwargs['pk']) 
         return context
     
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.forum = get_object_or_404(ForumPost, pk = self.kwargs['pk'])
+        form.instance.ForumPost = get_object_or_404(ForumPost, pk = self.kwargs['pk'])
         return super(ForumCommentCreate ,self).form_valid(form)
     
-    def get_success_url(self) -> str:
-        return reverse('forum-detail', kwargs={'pk':self.kwargs['pk'],})
+    def get_success_url(self):
+        return reverse('forumpost-detail', kwargs={'pk':self.kwargs['pk'],})
     
-    
+@login_required
+def ForumPostCreate(request):
+    if request.method == 'POST':
+        form = ForumPostForm(request.POST)
+        if form.is_valid():
+            forum = form.save(commit=False)
+            forum.author = request.user
+            forum.save()
+            return redirect('forumpost-detail', pk=forum.pk)
+    else:
+        form = ForumPostForm()
+    return render(request, 'foruns/forumpost_form.html', {'form': form})
+
+

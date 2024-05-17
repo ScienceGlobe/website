@@ -1,27 +1,51 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <style>
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #333436; /* Cor de fundo #3e4040 */
+      opacity: 1; /* Definir opacidade para 0.7 */
+      z-index: 1; /* Garante que o overlay esteja acima do conteúdo */
+    } 
+    .center-content {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 1500px;
+      z-index: 2; /* Garante que o conteúdo esteja acima do overlay */
+    }
+  </style>
 
-<h1>{{ forumpost.name }}</h1>
-<p><strong>Post date</strong> {{ forumpost.post_date }}</p>
-<p><strong>Author:</strong> <a href="{% url 'forumpost-by-author' forumpost.author.pk %}">{{ forumpost.author }}</a></p>
-<p><strong>Description:</strong></p>
-<p style="white-space:pre-wrap;">{{ forumpost.description }}</p>
+  <div class="overlay"></div>
+  
+  <div class="center-content">
+    <h1>{{ forumpost.name }}</h1>
+    <p><strong>Post date:</strong> {{ forumpost.post_date }}</p>
+    <p><strong>Author:</strong> <a href="{% url 'forumpost-by-author' forumpost.author.pk %}">{{ forumpost.author }}</a></p>
+    <p><strong>Description:</strong></p>
+    <p style="white-space:pre-wrap;">{{ forumpost.description }}</p>
 
-<div style="margin-left:20px;margin-top:20px">
-<h4>Comments</h4>
+    <div style="margin-top: 20px;">
+      <h4>Comments</h4>
 
-{% for comment in forumpost.forumpostcomment_set.all %}
-<hr>
-<p>{{comment.author}} ({{comment.post_date}}) - {{comment.description}}</p>
-{% endfor %}
-<hr>
-{% if user.is_authenticated %}
-  <a href="{% url 'forumpost_comment' forumpost.id %}">Add a new comment</a></p>
-{% else %}
-  <p><a>Login</a> to add a new comment</p>
-{% endif %} 
+      {% for comment in forumpost.forumpostcomment_set.all %}
+        <hr>
+        <p>{{ comment.author }} ({{ comment.post_date }}) - {{ comment.description }}</p>
+      {% endfor %}
 
-
-</div>
+      <hr>
+      {% if user.is_authenticated %}
+        <a href="{% url 'forumpost_comment' forumpost.id %}">Add a new comment</a>
+      {% else %}
+        <p><a>Login</a> to add a new comment</p>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
