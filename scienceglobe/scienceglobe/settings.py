@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'foruns.apps.ForunsConfig',
     'noticias.apps.NoticiasConfig',
     'home.apps.HomeConfig',
+    'user.apps.UserConfig',
 ]
 
 MIDDLEWARE = [
