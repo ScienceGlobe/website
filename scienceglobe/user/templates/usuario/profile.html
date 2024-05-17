@@ -6,6 +6,11 @@
         <p><strong>Nome:</strong> {{ name }}</p>
         <p><strong>Nome de Usuário:</strong> {{ username }}</p>
         <p><strong>Email:</strong> {{ email }}</p>
-        <p><a href="{% url 'password_change' %}">Redefinir Senha</a></p>
+        
+        {% if user.is_superuser %}
+            <p><strong>Administrador:</strong> Sim</p>
+        {% else %}
+            <p><strong>Administrador:</strong> Não</p>
+        {% endif %}
     </div>
 {% endblock %}

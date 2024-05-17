@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+
 
 #Formulário de cadastro de usuários
 def create(request):
@@ -45,3 +47,4 @@ def profile(request):
         'email': user.email,
     }
     return render(request, 'usuario/profile.html', context)
+
