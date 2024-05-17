@@ -126,38 +126,25 @@
   <!-- Barra lateral retrátil -->
   <div class="sidebar" id="sidebar">
     <ul class="sidebar-nav">
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'todos' %}">Artigos</a></li>
-      <li><a href="{% url 'todas' %}">Noticias</a></li>
-      <li><a href="{% url 'forumpost' %}">Forum</a></li>
-      {% if user.is_superuser %}
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'todos' %}">Artigos</a></li>
+        <li><a href="{% url 'todas' %}">Notícias</a></li>
+        <li><a href="{% url 'forumpost' %}">Fórum</a></li>
+        {% if user.is_superuser %}
             <a href="{% url 'admin:index' %}"><button>Django Admin</button></a>
-      {% endif %}
-      {% if user.is_superuser %}
-            <a href="{% url 'admin:index' %}"><button>Django Admin</button></a>
-      {% endif %}
-      {% if user.is_authenticated %}
-        </form>
-            <a href="{% url 'profile' %}">{{ user.username }}</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'profile' %}">{{ user.username }}</a></li>
             <form action="{% url 'logout' %}?next={% url 'home' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
         {% else %}
-            <p><a href="{% url 'create' %}">Cadastre-se</a> ou faça <a href="{% url 'painel' %}">login</a></p>
-        </form>
-            <a href="{% url 'profile' %}">{{ user.username }}</a>
-            <form action="{% url 'logout' %}?next={% url 'home' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Logout</button>
-        </form>
-        {% else %}
-            <p><a href="{% url 'create' %}">Cadastre-se</a> ou faça <a href="{% url 'painel' %}">login</a></p>
-      {% endif %}
-      
-      
-      
+            <li><a href="{% url 'create' %}">Cadastre-se</a> ou faça <a href="{% url 'painel' %}">login</a></li>
+        {% endif %}
     </ul>
+</div>
+
   </div>
   <!-- Botão para abrir/retrair a barra lateral -->
   <button class="sidebar-btn" id="sidebar-btn">☰</button>
