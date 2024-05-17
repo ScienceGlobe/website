@@ -133,6 +133,9 @@
       {% if user.is_superuser %}
             <a href="{% url 'admin:index' %}"><button>Django Admin</button></a>
       {% endif %}
+      {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}"><button>Django Admin</button></a>
+      {% endif %}
       {% if user.is_authenticated %}
         </form>
             <a href="{% url 'profile' %}">{{ user.username }}</a>
@@ -142,7 +145,16 @@
         </form>
         {% else %}
             <p><a href="{% url 'create' %}">Cadastre-se</a> ou faça <a href="{% url 'painel' %}">login</a></p>
+        </form>
+            <a href="{% url 'profile' %}">{{ user.username }}</a>
+            <form action="{% url 'logout' %}?next={% url 'home' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+        {% else %}
+            <p><a href="{% url 'create' %}">Cadastre-se</a> ou faça <a href="{% url 'painel' %}">login</a></p>
       {% endif %}
+      
       
       
     </ul>
