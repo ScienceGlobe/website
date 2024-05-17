@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>Perfil do Usuário</h1>
+        <p><strong>Nome:</strong> {{ name }}</p>
+        <p><strong>Nome de Usuário:</strong> {{ username }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><a href="{% url 'password_change' %}">Redefinir Senha</a></p>
+    </div>
+{% endblock %}
