@@ -130,6 +130,12 @@
       <li><a href="{% url 'todos' %}">Artigos</a></li>
       <li><a href="{% url 'todas' %}">Noticias</a></li>
       <li><a href="{% url 'forumpost' %}">Forum</a></li>
+      {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}">{{ user.username }}</a>
+      {% else %}
+        <p><a href="{% url 'create' %}">Cadastre-se</a> ou faca <a href="{% url 'painel' %}">login</a></p>
+      {% endif %}
+      
     </ul>
   </div>
   <!-- Botão para abrir/retrair a barra lateral -->
