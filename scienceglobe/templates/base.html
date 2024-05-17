@@ -130,6 +130,9 @@
       <li><a href="{% url 'todos' %}">Artigos</a></li>
       <li><a href="{% url 'todas' %}">Noticias</a></li>
       <li><a href="{% url 'forumpost' %}">Forum</a></li>
+      {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}"><button>Django Admin</button></a>
+      {% endif %}
       {% if user.is_authenticated %}
         </form>
             <a href="{% url 'profile' %}">{{ user.username }}</a>
