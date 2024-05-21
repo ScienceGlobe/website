@@ -27,3 +27,4 @@ utils==1.0.2
 virtualenv==20.25.3
 virtualenvwrapper-win==1.2.7
 webencodings==0.5.1
+django-apscheduler==0.6.2
