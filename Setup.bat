@@ -34,7 +34,7 @@ IF %ERRORLEVEL% EQU 0 (
 echo Science Globe: Instalando bibliotecas Python...
 
 rem Definindo o tamanho da barra de carregamento
-set "barSize=22"
+set "barSize=23"
 
 rem Inicializando a barra de carregamento
 set "progress=0"
@@ -105,6 +105,9 @@ pip install requests >nul
 set /a "progress+=1"
 call :UpdateProgressBar
 pip install bs4 >nul
+set /a "progress+=1"
+call :UpdateProgressBar
+pip install django-apscheduler >nul
 set /a "progress+=1"
 call :UpdateProgressBar
 
