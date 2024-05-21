@@ -7,5 +7,7 @@ class NoticiasConfig(AppConfig):
     def ready(self):
         print("Ready function is called.")
         from . import signals
+        from . import updater
+        updater.start()
 
 

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Noticia, NoticiaWeb
-from .scripts import scrape_economia
 
 # Create your views here.
 
