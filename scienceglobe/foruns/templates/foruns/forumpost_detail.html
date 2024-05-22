@@ -29,6 +29,7 @@
     <h1>{{ forumpost.name }}</h1>
     <p><strong>Post date:</strong> {{ forumpost.post_date }}</p>
     <p><strong>Author:</strong> <a href="{% url 'forumpost-by-author' forumpost.author.pk %}">{{ forumpost.author }}</a></p>
+    <p><strong>Gênero:</strong> {{ forumpost.genero }}</p>
     <p><strong>Description:</strong></p>
     <p style="white-space:pre-wrap;">{{ forumpost.description }}</p>
 
