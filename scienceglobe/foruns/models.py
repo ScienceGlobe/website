@@ -4,13 +4,14 @@ from django.db import models
 # Create your models here.
 
 from datetime import date
+from django.db.models.functions import Lower
 from django.urls import reverse
 from django.contrib.auth.models import User
 
 
 
 class AutorPost(models.Model):
-    """Modelo representando um autor de um post"""
+
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
     bio = models.TextField(max_length=400, help_text="Informe sua Bio")
     
@@ -22,13 +23,38 @@ class AutorPost(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+class GeneroForum(models.Model):
+
+    name = models.CharField(
+        max_length=200,
+        unique=True,
+        help_text="Insira um genero pra posts de Forums"
+    )
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('generoForum-detail', args=[str(self.id)])
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                Lower('name'),
+                name='generoForum_name_case_insensitive_unique',
+                violation_error_message = "Esse genero ja existe (case insensitive match)"
+            ),
+        ]
+
 
 
 class ForumPost(models.Model):
-    """Modelo representando um Post no Forum."""
+
     name = models.CharField(max_length=200)
+    genero = models.ForeignKey(GeneroForum, on_delete=models.CASCADE,null=True, help_text="Selecione o genero do seu post")
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-      # Foreign Key usado pois um post no forum pode ter apenas um autor, mas usuarios podem ter varios posts no Forum.
     description = models.TextField(max_length=2000, help_text="Insira o texto do seu post")
     post_date = models.DateField(auto_now_add=True)
     
@@ -43,12 +69,9 @@ class ForumPost(models.Model):
         
         
 class ForumPostComment(models.Model):
-    """
-    Modelo representando um comentario em um post no forum.
-    """
+
     description = models.TextField(max_length=1000, help_text="Insira seu comentario aqui")
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-      # Foreign Key used because ForumPostComment can only have one author/User, but users can have multiple comments
     post_date = models.DateTimeField(auto_now_add=True)
     ForumPost= models.ForeignKey(ForumPost, null=True ,on_delete=models.CASCADE)
     
