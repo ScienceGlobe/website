@@ -8,6 +8,7 @@ urlpatterns = [
     path('forum/<int:pk>', views.ForumPostDetailView.as_view(), name='forumpost-detail'),
     path('autores/', views.AutorListView.as_view(), name='autores'),
     path('forum/<int:pk>/comment/', views.ForumCommentCreate.as_view(), name='forumpost_comment'),
-    path('forus/novo/',  ForumPostCreate, name='forumpost-create')
-
+    path('forus/novo/',  ForumPostCreate, name='forumpost-create'),
+    path('forumpost/<int:pk>/like/', views.like_forum_post, name='like_forum_post'),
+    path('forumpost/comment/<int:pk>/like/', views.like_forum_comment, name='like_forum_comment'),
 ]

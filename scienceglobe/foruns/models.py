@@ -57,6 +57,7 @@ class ForumPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     description = models.TextField(max_length=2000, help_text="Insira o texto do seu post")
     post_date = models.DateField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='forum_post_likes', blank=True)
     
     class Meta:
         ordering = ["-post_date"]
@@ -66,6 +67,9 @@ class ForumPost(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def total_likes(self):
+        return self.likes.count()
         
         
 class ForumPostComment(models.Model):
@@ -73,7 +77,8 @@ class ForumPostComment(models.Model):
     description = models.TextField(max_length=1000, help_text="Insira seu comentario aqui")
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     post_date = models.DateTimeField(auto_now_add=True)
-    ForumPost= models.ForeignKey(ForumPost, null=True ,on_delete=models.CASCADE)
+    ForumPost = models.ForeignKey(ForumPost, null=True ,on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='forum_comment_likes', blank=True)
     
     class Meta:
         ordering = ["post_date"]
@@ -85,3 +90,6 @@ class ForumPostComment(models.Model):
         else:
             titlestring=self.description
         return titlestring
+    
+    def total_likes(self):
+        return self.likes.count()
