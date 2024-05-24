@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'noticias.apps.NoticiasConfig',
     'home.apps.HomeConfig',
     'user.apps.UserConfig',
+    'search.apps.SearchConfig',
 ]
 
 MIDDLEWARE = [
