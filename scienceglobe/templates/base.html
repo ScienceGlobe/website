@@ -122,6 +122,11 @@
 <body>
   <div class="background-square"></div>
   <div class="background-rectangle"></div>
+   <!-- Formulário de busca -->
+   <form method="GET" action="{% url 'search' %}" class="search-form">
+    <input type="text" name="q" placeholder="Search...">
+    <button type="submit">Search</button>
+  </form>
 
   <!-- Barra lateral retrátil -->
   <div class="sidebar" id="sidebar">
