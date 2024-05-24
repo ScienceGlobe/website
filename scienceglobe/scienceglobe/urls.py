@@ -28,5 +28,7 @@ urlpatterns = [
     path('noticias/', include('noticias.urls')),
     path('foruns/', include('foruns.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('user/', include('user.urls'))
+    path('user/', include('user.urls')),
+    path('search/', include('search.urls')),
+
 ]
