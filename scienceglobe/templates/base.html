@@ -122,7 +122,7 @@
     .search-form {
       text-align: center; /* Centraliza o formulário */
       position: fixed; /* Fixa o formulário na parte inferior da página */
-      bottom: 780px; /* Distância do formulário ao fundo da página */
+      bottom: 830px; /* Distância do formulário ao fundo da página */
       left: 50%; /* Centraliza horizontalmente */
       transform: translateX(-50%); /* Centraliza horizontalmente */
       height: 35px; /* Define a altura da barra de pesquisa */
@@ -190,25 +190,7 @@
       </div>
     </div>
     <div class="pagination-custom">
-      {% block pagination %}
-      <div class="pagination">
-        <span class="step-links">
-            {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; Inicio</a>
-                <a href="?page={{ page_obj.previous_page_number }}">volta</a>
-            {% endif %}
-    
-            <span class="current">
-                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-            </span>
-    
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">proxima</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
-            {% endif %}
-        </span>
-      </div>
-      {% endblock %}
+      {% block pagination %}{% endblock %}
     </div>
   </div>
   
