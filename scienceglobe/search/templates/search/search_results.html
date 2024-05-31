@@ -1,10 +1,31 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-    <h1>Search Results for "{{ query }}"</h1>
-    <div>
+    <style>
+        .logo-image {
+            position: fixed;
+            top: 8%;
+            left: 90%;
+            transform: translate(-452%, -50%);
+            z-index: -1;
+          }
+          .logo-image img {
+            max-width: 100%;
+            height: auto;
+          }
+        .results-container {
+            position: relative;
+            top: 210px; /* ajuste o valor conforme necessário */
+            left: -160px;
+        
+        }
+    </style>
+    
+    <div class="results-container">
+        <h1>Resultados para "{{ query }}"</h1>
+        
         {% if results.home_results %}
-            <h2>Home Results</h2>
+            <h2>Resultados da Home</h2>
             <ul>
                 {% for result in results.home_results %}
                     <li>{{ result.title }}</li>
@@ -13,7 +34,7 @@
         {% endif %}
         
         {% if results.artigo_results %}
-            <h2>Artigo Results</h2>
+            <h2>Resultados de Artigos</h2>
             <ul>
                 {% for result in results.artigo_results %}
                     <li>{{ result.title }}</li>
@@ -22,7 +43,7 @@
         {% endif %}
         
         {% if results.noticia_results %}
-            <h2>Noticia Results</h2>
+            <h2>Resuldados de Noticias</h2>
             <ul>
                 {% for result in results.noticia_results %}
                     <li>{{ result.title }}</li>
@@ -31,7 +52,7 @@
         {% endif %}
         
         {% if results.forum_results %}
-            <h2>Forum Results</h2>
+            <h2>Resultados de Foruns</h2>
             <ul>
                 {% for result in results.forum_results %}
                     <li>{{ result.name }}</li>
@@ -40,7 +61,10 @@
         {% endif %}
         
         {% if not results %}
-            <p>No results found.</p>
+            <p>Sem Resultados encontrados.</p>
         {% endif %}
+        <div class="logo-image">
+            <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
+          </div>
     </div>
 {% endblock %}
