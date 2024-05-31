@@ -51,6 +51,12 @@
       transform: translate(-50%, -50%);
       width: 80%;
       max-width: 600px;
+      max-height: 50vh; /* Limita a altura máxima do contêiner */
+      overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
+      scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+    }
+    .news-container::-webkit-scrollbar {
+      width: 0; /* Oculta a barra de rolagem no Chrome/Safari */
     }
     .news-message {
       background-color: #333436;
