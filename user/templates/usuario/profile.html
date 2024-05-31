@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        .container {
+            margin-top: 220px; /* Margem superior de 20 pixels */
+            margin-left: -100px; /* Margem esquerda de 10 pixels */
+        }
+
+        h1 {
+            font-size: 36px; /* Tamanho da fonte do título de 24 pixels */
+            margin-top: 10px; /* Margem superior do título de 10 pixels */
+            margin-bottom: 10px; /* Margem inferior do título de 10 pixels */
+        }
+
+        p {
+            font-size: 24px; /* Tamanho da fonte do parágrafo de 16 pixels */
+            margin-bottom: 10px; /* Margem inferior do parágrafo de 10 pixels */
+        }
+
+        strong {
+            font-weight: bold; /* Deixa o texto em negrito */
+        }
+    </style>
+
+    <div class="container">
+        <h1>Perfil do Usuário</h1>
+        <p><strong>Nome:</strong> {{ name }}</p>
+        <p><strong>Nome de Usuário:</strong> {{ username }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        
+        {% if user.is_superuser %}
+            <p><strong>Administrador:</strong> Sim</p>
+        {% else %}
+            <p><strong>Administrador:</strong> Não</p>
+        {% endif %}
+    </div>
+{% endblock %}

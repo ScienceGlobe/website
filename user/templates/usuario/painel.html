@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        .logo-image {
+            position: fixed;
+            top: 10%;
+            left: 90%;
+            transform: translate(-475%, -50%);
+            z-index: 1;
+          }
+          .logo-image img {
+            max-width: 100%;
+            height: auto;
+          }
+        .custom-form {
+            margin-top: 250px;
+            margin-left: 250px;
+            height: 400px;
+        }
+        /* Estilo para tornar o formulário não clicável */
+        .search-form {
+            pointer-events: none;
+        }
+        .background-square {
+            z-index: 1; /* Garante que o retângulo fique atrás do conteúdo */
+        }
+    </style>
+    <div class="logo-image">
+        <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
+      </div>
+    <form name="formPainel" id="formPainel" method="post" action="{% url 'dologin' %}" class="custom-form">
+        <div class="col-6">
+            {% if msg %}
+                <div class="alert {{class}}">
+                    {{msg}}
+                </div>
+            {% endif %}
+
+            {% csrf_token %}
+            <input class="form-control mt-4" type="text" name="user" id="user" placeholder="Nome do Usuário:">
+            <input class="form-control mt-4" type="password" name="password" id="password" placeholder="Senha:">
+            <input class="btn btn-dark mt-4" type="submit" value="Entrar">
+            <a href="{% url 'create' %}" class="btn btn-primary mt-4">Registrar</a> 
+        </div>
+    </form>
+{% endblock %}

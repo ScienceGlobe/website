@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <style>
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #333436; /* Cor de fundo #3e4040 */
+      opacity: 1; /* Definir opacidade para 0.7 */
+      z-index: 1; /* Garante que o overlay esteja acima do conteúdo */
+    } 
+    .center-content {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 1500px;
+      z-index: 2; /* Garante que o conteúdo esteja acima do overlay */
+    }
+  </style>
+
+  <div class="overlay"></div>
+  
+  <div class="center-content">
+    <div class="container">
+      <h1>{{ artigo.title }}</h1>
+      <p><strong>Por:</strong> <a href="">{{ artigo.autor }}</a></p>
+      <!-- author detail link not yet defined -->
+      <p><strong>Tipo: </strong> <a href="">{{ artigo.tipo }}</a></p>
+      <div class="text-wrap">{{ artigo.texto }}</div>
+    </div>
+  </div>
+{% endblock %}

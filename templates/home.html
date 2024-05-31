@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load static %}
+  <style>
+    .rounded-square {
+      border-radius: 20px; /* Define o raio da borda para arredondar os cantos */
+    }
+    .text-square {
+      background-color: #646464;
+      color: white;
+      width: 350px;
+      height: 60px;
+      display: flex;
+      justify-content: flex-start; /* Alinha o conteúdo ao início (esquerda) */
+      align-items: center;
+      border-radius: 10px; /* Ajusta o raio da borda para menos arredondado */
+      font-family: Constantia, sans-serif;
+      font-size: 16px;
+      padding-left: 20px; /* Adiciona padding à esquerda */
+      position: relative;
+    }
+    .notification {
+      border-radius: 10px; /* Define um raio de borda arredondado */
+      padding: 2px 5px; /* Ajusta o padding para um tamanho menor */
+      position: absolute;
+      top: 10px; /* Ajusta a altura da notificação */
+      right: 10px; /* Posiciona à direita dentro do elemento pai */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-size: 12px; /* Tamanho da fonte do texto dentro da notificação */
+      font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+      font-weight: bold;
+    }
+    .notification-artigos {
+      background-color: #41c568; /* Cor para notificações de artigos */
+      color: black; /* Cor do texto para notificações de artigos */
+    }
+    .notification-noticias {
+      background-color: #b3c8ff; /* Cor para notificações de notícias */
+      color: black; /* Cor do texto para notificações de notícias */
+    }
+    .notification-foruns {
+      background-color: #53e2e1; /* Cor para notificações de fóruns */
+      color: black; /* Cor do texto para notificações de fóruns */
+    }
+  </style>
+  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -295%); display: flex; align-items: center; z-index: -1;">
+    <img src="{% static "images/logo.png" %}" alt="Scienceglobe Logo" style="width: 200px; margin-right: 10px;">
+  </div>
+  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -750%);">
+    <h1></h1>
+  </div>
+  <div class="container d-flex justify-content-center align-items-center" style="height: 100vh; position: relative;">
+    <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 100px; position: relative;" class="rounded-square">
+      <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #41c568; position: relative;">
+        <a style="position: relative; top: -50px; left: 10%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;" href="{% url 'todos' %}">Artigos</a>
+        <div style="width: 80px; height: 80px; background-color: #41c568; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
+          <img src="{% static "images/1.png" %}" alt="Artigos logo" style="width: 60%; height: 60%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
+        </div>
+        <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);"><a href="{% url 'ciencias-fisica' %}">
+          Ciências físicas e engenharia
+          <div class="notification notification-artigos">{{num_ciencias_fisica}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);"><a href="{% url 'cultura' %}">
+          Cultura
+          <div class="notification notification-artigos">{{num_cultura}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 165px; left: calc(15% - 30px);"><a href="{% url 'saude' %}">
+          Saude
+          <div class="notification notification-artigos">{{num_saude}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 230px; left: calc(15% - 30px);"><a href="{% url 'art_tecnologia' %}">
+          Tecnologia
+          <div class="notification notification-artigos">{{num_tec}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);"><a href="{% url 'home' %}">
+          Outros
+          <div class="notification notification-artigos">000</div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 100px; position: relative;" class="rounded-square">
+      <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #b3c8ff; position: relative;">
+        <a style="position: relative; top: -50px; left: 10%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;" href="{% url 'todas' %}">Notícias</a>
+        <div style="width: 80px; height: 80px; background-color: #b3c8ff; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
+          <img src="{% static "images/2.png" %}" alt="Noticias logo" style="width: 85%; height: 85%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
+        </div>
+        <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);"><a href="{% url 'tecnologia' %}">Tecnologia</a>
+          <div class="notification notification-noticias">{{num_tecnologia}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);"><a href="{% url 'ciencias' %}">Ciências</a>
+          <div class="notification notification-noticias">{{num_ciencias}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 165px; left: calc(15% - 30px);"><a href="{% url 'ambiente' %}">Meio Ambiente</a>
+          <div class="notification notification-noticias">{{num_meioambiente}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 230px; left: calc(15% - 30px);"><a href="{% url 'economia' %}">Economia</a>
+          <div class="notification notification-noticias">{{num_economia}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
+          Outros
+          <div class="notification notification-noticias">000</div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 320px; position: relative;" class="rounded-square">
+      <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #53e2e1; position: relative;">
+        <a style="position: relative; top: -50px; left: 10%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;" href="{% url 'forumpost' %}">Fóruns</a>
+        <div style="width: 80px; height: 80px; background-color: #53e2e1; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
+          <img src="{% static "images/3.png" %}" alt="Foruns logo" style="width: 80%; height: 80%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
+        </div>
+        <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);">
+          <a href="{% url 'forum_tecnologia' %}">Tecnologia</a>
+          <div class="notification notification-foruns">{{num_foruns_tecnologia}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);">
+          <a href="{% url 'forum_ciencias' %}">Ciências</a>
+          <div class="notification notification-foruns">{{num_foruns_ciencias}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 165px; left: calc(15% - 30px);">
+          <a href="{% url 'forum_curiosidades' %}">Curiosidades</a>
+          <div class="notification notification-foruns">{{num_foruns_curiosidades}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 230px; left: calc(15% - 30px);">
+          <a href="{% url 'forum_duvidas' %}">Dúvidas</a>
+          <div class="notification notification-foruns">{{num_foruns_duvidas}}</div>
+        </div>
+        <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
+          <a href="{% url 'forum_outros' %}">Outros</a>
+          <div class="notification notification-foruns">{{num_foruns_outros}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
