@@ -1,1 +1,1 @@
-web: gunicorn scienceglobe.wsgi  --log-file -
+web: gunicorn scienceglobe.wsgi --log-file -
