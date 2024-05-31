@@ -111,23 +111,23 @@
           <img src="{% static "images/3.png" %}" alt="Foruns logo" style="width: 80%; height: 80%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
         </div>
         <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);">
-          <a href="">Tecnologia</a>
+          <a href="{% url 'forum_tecnologia' %}">Tecnologia</a>
           <div class="notification notification-foruns">{{num_foruns_tecnologia}}</div>
         </div>
         <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);">
-          <a href="">Ciências</a>
+          <a href="{% url 'forum_ciencias' %}">Ciências</a>
           <div class="notification notification-foruns">{{num_foruns_ciencias}}</div>
         </div>
         <div class="text-square" style="position: absolute; top: 165px; left: calc(15% - 30px);">
-          <a href="">Curiosidades</a>
+          <a href="{% url 'forum_curiosidades' %}">Curiosidades</a>
           <div class="notification notification-foruns">{{num_foruns_curiosidades}}</div>
         </div>
         <div class="text-square" style="position: absolute; top: 230px; left: calc(15% - 30px);">
-          <a href="">Dúvidas</a>
+          <a href="{% url 'forum_duvidas' %}">Dúvidas</a>
           <div class="notification notification-foruns">{{num_foruns_duvidas}}</div>
         </div>
         <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
-          <a href="">Outros</a>
+          <a href="{% url 'forum_outros' %}">Outros</a>
           <div class="notification notification-foruns">{{num_foruns_outros}}</div>
         </div>
       </div>
