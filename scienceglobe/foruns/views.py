@@ -100,4 +100,10 @@ def like_forum_comment(request, pk):
         comment.likes.add(request.user)
     return redirect('forumpost-detail', pk=comment.ForumPost.pk)
 
+def filtrar_forumpost_por_genero(request, genero):
+    
+    foruns = ForumPost.objects.filter(genero__name=genero)
+    
+    return render(request, 'foruns/forumpost_por_genero.html', {'foruns': foruns, 'genero': genero})
+
 
