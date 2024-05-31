@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        .search-form {
+      text-align: center; /* Centraliza o formulário */
+      position: fixed; /* Fixa o formulário na parte inferior da página */
+      bottom: 780px; /* Distância do formulário ao fundo da página */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      height: 35px; /* Define a altura da barra de pesquisa */
+      z-index: -2;
+      width: calc(60% - 40px); /* Largura da barra de pesquisa */
+    }
+        .logo-image {
+            position: fixed;
+            top: 10%;
+            left: 90%;
+            transform: translate(-475%, -50%);
+            z-index: 1;
+          }
+          .logo-image img {
+            max-width: 100%;
+            height: auto;
+          }
+        .custom-form {
+            margin-top: 250px;
+            margin-left: 250px;
+            height: 400px;
+        }
+        /* Estilo para tornar o formulário não clicável */
+        .search-form {
+            pointer-events: none;
+        }
+        .background-square {
+            z-index: 1; /* Garante que o retângulo fique atrás do conteúdo */
+        }
+    </style>
+    <div class="logo-image">
+        <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
+      </div>
+
+    <form name="form-users" id="formUsers" method="post" action="{% url 'store' %}" class="custom-form">
+        <div class="col-6">
+            {% if msg %}
+                <div class="alert {{class}}">
+                    {{msg}}
+                </div>
+            {% endif %}
+
+            {% csrf_token %}
+            <input class="form-control mt-4" type="text" name="name" id="name" placeholder="Nome:" required>
+            <input class="form-control mt-4" type="text" name="user" id="user" placeholder="Nome do Usuário:" required>
+            <input class="form-control mt-4" type="password" name="password" id="password" placeholder="Senha:" required>
+            <input class="form-control mt-4" type="password" name="password-conf" id="password-conf" placeholder="Repita a Senha:" required>
+            <input class="form-control mt-4" type="email" name="email" id="email" placeholder="Email:" required>
+            <input class="btn btn-primary mt-4" type="submit" value="Cadastrar">
+        </div>
+    </form>
+{% endblock %}
