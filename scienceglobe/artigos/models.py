@@ -1,4 +1,6 @@
 from django.db import models
+
+from django.db import models
 from django.urls import reverse
 
 from django.db.models import UniqueConstraint
@@ -26,6 +28,31 @@ class Tipo(models.Model):
                 Lower('name'),
                 name='tipo_name_case_insensitive_unique',
                 violation_error_message = "Esse tipo ja existe (case insensitive match)"
+            ),
+        ]
+
+class Genero(models.Model):
+    """Modelo representando um genero de noticia"""
+    name = models.CharField(
+        max_length=200,
+        unique=True,
+        help_text="Insira um genero de noticia"
+    )
+
+    def __str__(self):
+        """String pra representar o objeto do Modelo"""
+        return self.name
+
+    def get_absolute_url(self):
+        """Retorna uma url pra acessar uma instancia de Genero"""
+        return reverse('genero-detail', args=[str(self.id)])
+
+    class Meta:
+        constraints = [
+            UniqueConstraint(
+                Lower('name'),
+                name='genero_artigo_name_case_insensitive_unique',
+                violation_error_message = "Esse genero ja existe (case insensitive match)"
             ),
         ]
 
@@ -63,3 +90,15 @@ class Autor(models.Model):
 
     def __str__(self):
         return f'{self.last_name}, {self.first_name}'
+    
+class ArtigoWeb(models.Model):
+
+    title = models.CharField(max_length=100)
+    genero = models.ForeignKey(Genero, on_delete=models.RESTRICT, null=True)
+    corpo = models.TextField(max_length=5000)
+
+    def __str__(self):
+        return self.title
+    
+    def get_absolute_url(self):
+        return reverse('artigo-detail', args=[str(self.id)])
