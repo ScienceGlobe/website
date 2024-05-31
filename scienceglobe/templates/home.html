@@ -58,23 +58,23 @@
         <div style="width: 80px; height: 80px; background-color: #41c568; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
           <img src="{% static "images/1.png" %}" alt="Artigos logo" style="width: 60%; height: 60%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
         </div>
-        <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);">
-          AAA
-          <div class="notification notification-artigos">000</div>
+        <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);"><a href="{% url 'ciencias-fisica' %}">
+          Ciências físicas e engenharia
+          <div class="notification notification-artigos">{{num_ciencias_fisica}}</div>
         </div>
-        <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);">
-          AAA
-          <div class="notification notification-artigos">000</div>
+        <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);"><a href="{% url 'cultura' %}">
+          Cultura
+          <div class="notification notification-artigos">{{num_cultura}}</div>
         </div>
-        <div class="text-square" style="position: absolute; top: 165px; left: calc(15% - 30px);">
-          AAA
-          <div class="notification notification-artigos">000</div>
+        <div class="text-square" style="position: absolute; top: 165px; left: calc(15% - 30px);"><a href="{% url 'saude' %}">
+          Saude
+          <div class="notification notification-artigos">{{num_saude}}</div>
         </div>
-        <div class="text-square" style="position: absolute; top: 230px; left: calc(15% - 30px);">
-          AAA
-          <div class="notification notification-artigos">000</div>
+        <div class="text-square" style="position: absolute; top: 230px; left: calc(15% - 30px);"><a href="{% url 'art_tecnologia' %}">
+          Tecnologia
+          <div class="notification notification-artigos">{{num_tec}}</div>
         </div>
-        <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
+        <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);"><a href="{% url 'home' %}">
           Outros
           <div class="notification notification-artigos">000</div>
         </div>

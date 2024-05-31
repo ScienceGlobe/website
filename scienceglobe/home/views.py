@@ -3,10 +3,12 @@ from django.apps import apps
 from django.http import HttpResponse
 
 
-Artigo = apps.get_model('artigos', 'Artigo')
+
 NoticiaWeb = apps.get_model('noticias', 'NoticiaWeb')
 Genero = apps.get_model('noticias', 'Genero')
 Forum = apps.get_model('foruns', 'ForumPost')
+ArtigoWeb = apps.get_model('artigos', 'ArtigoWeb')
+ArtigoGenero = apps.get_model('artigos', 'Genero')
 ForumGenero = apps.get_model("foruns", "GeneroForum")
 
 def home_view(request):
@@ -23,11 +25,16 @@ def home_view(request):
     forum_genero_ciencias = ForumGenero.objects.get(name= 'Ciências')
     forum_genero_outros = ForumGenero.objects.get(name= 'Outros')
 
+    artigo_genero_cienciaf = ArtigoGenero.objects.get(name='Ciências físicas e engenharia')
+    artigo_genero_cultura = ArtigoGenero.objects.get(name='Cultura')
+    artigo_genero_saude = ArtigoGenero.objects.get(name='Saude')
+    artigo_genero_tec = ArtigoGenero.objects.get(name='Tecnologia')
 
-
-
-    num_artigos = Artigo.objects.all().count()
-
+    num_artigos = ArtigoWeb.objects.all().count()
+    num_ciencias_fisica = ArtigoWeb.objects.filter(genero=artigo_genero_cienciaf).count()
+    num_cultura = ArtigoWeb.objects.filter(genero=artigo_genero_cultura).count()
+    num_saude = ArtigoWeb.objects.filter(genero=artigo_genero_saude).count()
+    num_tec = ArtigoWeb.objects.filter(genero=artigo_genero_tec).count()
 
 
     num_noticias = NoticiaWeb.objects.count()
@@ -36,7 +43,6 @@ def home_view(request):
     num_ciencias = NoticiaWeb.objects.filter(genero=genero_ciencias).count()
     num_meioambiente = NoticiaWeb.objects.filter(genero=genero_meioAmbiente).count()
     
-
 
 
     num_foruns = Forum.objects.all().count()
@@ -59,5 +65,9 @@ def home_view(request):
         'num_foruns_ciencias': num_foruns_ciencias,
         'num_foruns_duvidas': num_foruns_duvidas,
         'num_foruns_outros': num_foruns_outros,
+        'num_ciencias_fisica':num_ciencias_fisica,
+        'num_cultura': num_cultura,
+        'num_saude': num_saude,
+        'num_tec': num_tec,
     }
     return render(request, "home.html", context=context)

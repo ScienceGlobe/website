@@ -1,42 +1,43 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <style>
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #333436; /* Cor de fundo #3e4040 */
-      opacity: 1; /* Definir opacidade para 0.7 */
-      z-index: 1; /* Garante que o overlay esteja acima do conteúdo */
-    } 
-    .center-content {
-      position: absolute;
-      top: 15%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 1500px;
-      z-index: 2; /* Garante que o conteúdo esteja acima do overlay */
-      color: #fff; /* Cor do texto */
-    }
-    .center-content h1 {
-      color: #fff; /* Cor do título */
-    }
-    .center-content a {
-      color: #fff; /* Cor dos links */
-    }
+<style>
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333436; /* Cor de fundo #3e4040 */
+    opacity: 1; /* Definir opacidade para 0.7 */
+    z-index: 1; /* Garante que o overlay esteja acima do conteúdo */
+  } 
+  .center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1500px;
+    z-index: 2; /* Garante que o conteúdo esteja acima do overlay */
+    color: #fff; /* Cor do texto */
+    text-align: justify; /* Justificar o texto */
+  }
+  .center-content h1 {
+    color: #fff; /* Cor do título */
+  }
+  .center-content a {
+    color: #fff; /* Cor dos links */
+  }
   </style>
 
   <div class="overlay"></div>
   
   <div class="center-content">
     <div class="container">
-      <h1>{{ artigosweb.title }}</h1>
-      <p><strong>Genero: </strong> <a href="">{{ artigosweb.genero }}</a></p>
-      <div class="text-wrap" style="width: 80rem;">{{ artigosweb.corpo }}</div>
+      <h1>{{ artigoweb.title }}</h1>
+      <p><strong>Genero: </strong> <a href="">{{ artigoweb.genero }}</a></p>
+      <div class="text-wrap" style="width: 80rem;">{{ artigoweb.corpo }}</div>
     </div>
   </div>
 {% endblock %}
