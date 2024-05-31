@@ -87,7 +87,7 @@
       {% if user.is_authenticated %}
         <a href="{% url 'forumpost_comment' forumpost.id %}">Add a new comment</a>
       {% else %}
-        <p><a href="{% url 'login' %}">Login</a> to add a new comment</p>
+        <p><a href="{% url 'painel' %}">Login</a> to add a new comment</p>
       {% endif %}
     </div>
   </div>
