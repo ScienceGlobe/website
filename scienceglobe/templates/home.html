@@ -45,20 +45,22 @@
       color: black; /* Cor do texto para notificações de fóruns */
     }
   </style>
-
+  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -295%); display: flex; align-items: center; z-index: -1;">
+    <img src="{% static "images/logo.png" %}" alt="Scienceglobe Logo" style="width: 200px; margin-right: 10px;">
+  </div>
   <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -750%);">
-    <h1>Scienceglobe</h1>
+    <h1></h1>
   </div>
   <div class="container d-flex justify-content-center align-items-center" style="height: 100vh; position: relative;">
     <div style="width: 450px; height: 450px; background-color: #3e4040; margin-right: 100px; position: relative;" class="rounded-square">
       <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #41c568; position: relative;">
         <a style="position: relative; top: -50px; left: 10%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;" href="{% url 'todos' %}">Artigos</a>
         <div style="width: 80px; height: 80px; background-color: #41c568; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
-          <img src="{% static "images/1.png" %}" alt="Artigos" style="width: 100%; height: 100%; border-radius: 50%;"/>
+          <img src="{% static "images/1.png" %}" alt="Artigos logo" style="width: 60%; height: 60%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
         </div>
         <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);">
           AAA
-          <div class="notification notification-artigos">022200</div>
+          <div class="notification notification-artigos">000</div>
         </div>
         <div class="text-square" style="position: absolute; top: 100px; left: calc(15% - 30px);">
           AAA
@@ -73,7 +75,7 @@
           <div class="notification notification-artigos">000</div>
         </div>
         <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
-          AAA
+          Outros
           <div class="notification notification-artigos">000</div>
         </div>
       </div>
@@ -82,7 +84,7 @@
       <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #b3c8ff; position: relative;">
         <a style="position: relative; top: -50px; left: 10%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;" href="{% url 'todas' %}">Notícias</a>
         <div style="width: 80px; height: 80px; background-color: #b3c8ff; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
-          <img src="{% static "images/2.png" %}" alt="Notícias" style="width: 100%; height: 100%; border-radius: 50%;">
+          <img src="{% static "images/2.png" %}" alt="Noticias logo" style="width: 85%; height: 85%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
         </div>
         <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);"><a href="{% url 'tecnologia' %}">Tecnologia</a>
           <div class="notification notification-noticias">{{num_tecnologia}}</div>
@@ -97,8 +99,8 @@
           <div class="notification notification-noticias">{{num_economia}}</div>
         </div>
         <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
-          AAA
-          <div class="notification notification-noticias">1232000</div>
+          Outros
+          <div class="notification notification-noticias">000</div>
         </div>
       </div>
     </div>
@@ -106,7 +108,7 @@
       <div style="position: absolute; top: 20%; left: calc(50% - 200px); height: 10px; width: 400px; background-color: #53e2e1; position: relative;">
         <a style="position: relative; top: -50px; left: 10%; transform: translateX(-50%); color: white; margin: 0; font-family: Constantia, sans-serif; font-size: 30px;" href="{% url 'forumpost' %}">Fóruns</a>
         <div style="width: 80px; height: 80px; background-color: #53e2e1; border-radius: 50%; position: absolute; top: -120%; transform: translateY(-50%); right: 30px;" class="rounded-square">
-          <img src="{% static "images/3.png" %}" alt="Fóruns" style="width: 100%; height: 100%; border-radius: 100%;">
+          <img src="{% static "images/3.png" %}" alt="Foruns logo" style="width: 80%; height: 80%; border-radius: 0%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"/>
         </div>
         <div class="text-square" style="position: absolute; top: 35px; left: calc(15% - 30px);">
           <a href="">Tecnologia</a>
