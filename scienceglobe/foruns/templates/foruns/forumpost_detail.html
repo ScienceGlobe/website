@@ -61,16 +61,18 @@
     <p style="white-space:pre-wrap;">{{ forumpost.description }}</p>
 
     <div style="margin-top: 20px;">
-      <form action="{% url 'like_forum_post' forumpost.id %}" method="POST">
+      {% if user.is_authenticated %}
+      <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
         {% csrf_token %}
         <button type="submit">
-          {% if user in forumpost.likes.all %}
-            Descurtir
+          {% if user in comment.likes.all %}
+          Descurtir
           {% else %}
-            Curtir
+          Curtir
           {% endif %}
         </button>
       </form>
+      {% endif %}
       <p class="like-counter"><strong>Likes:</strong> {{ forumpost.total_likes }}</p>
     </div>
 
@@ -80,16 +82,18 @@
       {% for comment in comments %}
         <hr>
         <p>{{ comment.author }} ({{ comment.post_date }}) - {{ comment.description }}</p>
-        <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
-          {% csrf_token %}
-          <button type="submit">
-            {% if user in comment.likes.all %}
-              Descurtir
-            {% else %}
-              Curtir
-            {% endif %}
-          </button>
+        {% if user.is_authenticated %}
+              <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">
+                  {% if user in comment.likes.all %}
+                  Descurtir
+                  {% else %}
+                  Curtir
+                  {% endif %}
+                </button>
         </form>
+        {% endif %}
         <p class="like-counter"><strong>Likes:</strong> {{ comment.total_likes }}</p>
       {% endfor %}
 
