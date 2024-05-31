@@ -2,6 +2,16 @@
 
 {% block content %}
   <style>
+    .search-form {
+      text-align: center; /* Centraliza o formulário */
+      position: fixed; /* Fixa o formulário na parte inferior da página */
+      bottom: 780px; /* Distância do formulário ao fundo da página */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      height: 35px; /* Define a altura da barra de pesquisa */
+      z-index: -1;
+      width: calc(60% - 40px); /* Largura da barra de pesquisa */
+    }
     .overlay {
       position: fixed;
       top: 0;
@@ -85,9 +95,9 @@
 
       <hr>
       {% if user.is_authenticated %}
-        <a href="{% url 'forumpost_comment' forumpost.id %}">Add a new comment</a>
+        <a href="{% url 'forumpost_comment' forumpost.id %}">adicione um comentário</a>
       {% else %}
-        <p><a href="{% url 'painel' %}">Login</a> to add a new comment</p>
+        <p><a href="{% url 'painel' %}">Login</a> para adicionar um novo comentário</p>
       {% endif %}
     </div>
   </div>
