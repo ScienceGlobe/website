@@ -70,6 +70,12 @@
       max-width: 100%;
       height: auto;
     }
+    .create-forum-button {
+        position: absolute;
+        top: 92%; /* Ajuste para cima */
+        left: 50%; /* Centralização horizontal */
+        transform: translateX(-50%); /* Ajuste fino para centralização */
+    }
   </style>
 
   <div class="text-center">
@@ -95,12 +101,12 @@
       <p class="no-forum-message">Não há Foruns.</p>
     {% endif %}
   </div>
-  <div>
+
+  <div class="create-forum-button">
     {% if user.is_authenticated %}
-      <a href="{% url 'forumpost-create' %}">Criar um fórum.</a></p>
+      <a href="{% url 'forumpost-create' %}">Criar um fórum.</a>
     {% else %}
       <p>Faça <a href="{% url 'painel'%}?next={{request.path}}">Login</a> para criar um fórum.</p>
-{% endif %}
-
+    {% endif %}
   </div>
 {% endblock %}

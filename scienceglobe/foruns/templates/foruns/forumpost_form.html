@@ -1,10 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Create a New Forum</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Criar</button>
-</form>
+<style>
+    .overlay {
+        position: fixed; /* Posição fixa para cobrir toda a tela */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000; /* Valor de z-index alto para garantir que a sobreposição esteja acima de outros elementos */
+        display: flex; /* Flexbox para centralizar o conteúdo vertical e horizontalmente */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container {
+        max-width: 1200px; /* Define a largura máxima do formulário */
+        width: 90%; /* Define a largura do formulário em relação à largura máxima */
+        padding: 20px; /* Adiciona um espaçamento interno para o conteúdo do formulário */
+        box-sizing: border-box; /* Inclui as bordas e o preenchimento no cálculo da largura */
+        z-index: 2000; /* Valor de z-index maior para garantir que o formulário esteja acima da sobreposição */
+        
+    }
+</style>
+
+<div class="overlay">
+    <div class="form-container">
+        <h2>Criar um novo fórum</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Criar</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

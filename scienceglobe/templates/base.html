@@ -117,13 +117,39 @@
       cursor: pointer;
       z-index: 1100; /* Garante que o botão esteja acima da barra lateral */
     }
+
+    /* Estilo para a barra de pesquisa */
+    .search-form {
+      text-align: center; /* Centraliza o formulário */
+      position: fixed; /* Fixa o formulário na parte inferior da página */
+      bottom: 20px; /* Distância do formulário ao fundo da página */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      height: 780px; /* Define a altura da barra de pesquisa */
+      width: calc(60% - 40px); /* Largura da barra de pesquisa */
+    }
+    .search-form input[type="text"] {
+      width: 70%; /* Largura do campo de texto */
+      padding: 10px; /* Espaçamento interno */
+      border: none; /* Remove a borda */
+      border-radius: 5px; /* Bordas arredondadas */
+    }
+    .search-form button {
+      padding: 10px 20px; /* Espaçamento interno */
+      border: none; /* Remove a borda */
+      border-radius: 5px; /* Bordas arredondadas */
+      background-color: #007bff; /* Cor de fundo do botão */
+      color: #fff; /* Cor do texto do botão */
+      cursor: pointer; /* Cursor de ponteiro no hover */
+    }
   </style>
 </head>
 <body>
   <div class="background-square"></div>
   <div class="background-rectangle"></div>
-   <!-- Formulário de busca -->
-   <form method="GET" action="{% url 'search' %}" class="search-form">
+
+  <!-- Formulário de busca -->
+  <form method="GET" action="{% url 'search' %}" class="search-form">
     <input type="text" name="q" placeholder="Search...">
     <button type="submit">Search</button>
   </form>
@@ -150,7 +176,6 @@
     </ul>
 </div>
 
-  </div>
   <!-- Botão para abrir/retrair a barra lateral -->
   <button class="sidebar-btn" id="sidebar-btn">☰</button>
   <!-- Fim da barra lateral retrátil -->
@@ -161,28 +186,41 @@
       </div>
       <div class="col-sm-10">
         {% block content %}{% endblock %}
-        {% block pagination %}
-        <div class="pagination">
-          <span class="step-links">
-              {% if page_obj.has_previous %}
-                  <a href="?page=1">&laquo; Inicio</a>
-                  <a href="?page={{ page_obj.previous_page_number }}">volta</a>
-              {% endif %}
-      
-              <span class="current">
-                  Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-              </span>
-      
-              {% if page_obj.has_next %}
-                  <a href="?page={{ page_obj.next_page_number }}">proxima</a>
-                  <a href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
-              {% endif %}
-          </span>
-      </div>
-      {% endblock %}
       </div>
     </div>
+    <div class="pagination-custom">
+      {% block pagination %}
+      <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; Inicio</a>
+                <a href="?page={{ page_obj.previous_page_number }}">volta</a>
+            {% endif %}
+    
+            <span class="current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">proxima</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Ultima &raquo;</a>
+            {% endif %}
+        </span>
+      </div>
+      {% endblock %}
+    </div>
   </div>
+  
+  <style>
+    .pagination-custom {
+      position: absolute;
+      bottom: 20px; /* Ajuste a posição vertical conforme desejado */
+      left: 50%; /* Ajuste a posição horizontal conforme desejado */
+      transform: translateX(-50%); /* Centralize horizontalmente */
+      text-align: center; /* Centralize o conteúdo */
+    }
+  </style>
+  
 
   <script>
     document.getElementById('sidebar-btn').addEventListener('click', function() {

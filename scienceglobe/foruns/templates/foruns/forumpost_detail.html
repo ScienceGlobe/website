@@ -14,12 +14,29 @@
     } 
     .center-content {
       position: absolute;
-      top: 30%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 80%;
       max-width: 1500px;
+      max-height: 80vh; /* Altura máxima de 80% da altura da viewport */
+      overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
       z-index: 2; /* Garante que o conteúdo esteja acima do overlay */
+    }
+
+    /* Estilizando a barra de rolagem */
+    .center-content::-webkit-scrollbar {
+      width: 0; /* Oculta a barra de rolagem no Chrome/Safari */
+    }
+
+    .center-content {
+      scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+    }
+
+    /* Estilo para mover o contador de likes para a esquerda */
+    .like-counter {
+      margin-top: 20px;
+      margin-left: -1430px; /* Ajuste a margem à esquerda */
     }
   </style>
 
@@ -44,7 +61,7 @@
           {% endif %}
         </button>
       </form>
-      <p><strong>Likes:</strong> {{ forumpost.total_likes }}</p>
+      <p class="like-counter"><strong>Likes:</strong> {{ forumpost.total_likes }}</p>
     </div>
 
     <div style="margin-top: 20px;">
@@ -63,14 +80,14 @@
             {% endif %}
           </button>
         </form>
-        <p><strong>Likes:</strong> {{ comment.total_likes }}</p>
+        <p class="like-counter"><strong>Likes:</strong> {{ comment.total_likes }}</p>
       {% endfor %}
 
       <hr>
       {% if user.is_authenticated %}
         <a href="{% url 'forumpost_comment' forumpost.id %}">Add a new comment</a>
       {% else %}
-        <p><a href="{% url 'login' %}">Login</a> to add a new comment</p>
+        <p><a href="{% url 'painel' %}">Login</a> to add a new comment</p>
       {% endif %}
     </div>
   </div>
