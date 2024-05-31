@@ -4,6 +4,15 @@
 {% block content %}
 {% load static %}
   <style>
+    .search-form {
+      text-align: center; /* Centraliza o formulário */
+      position: fixed; /* Fixa o formulário na parte inferior da página */
+      bottom: 780px; /* Distância do formulário ao fundo da página */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      height: 35px; /* Define a altura da barra de pesquisa */
+      width: calc(60% - 40px); /* Largura da barra de pesquisa */
+    }
     .rounded-square {
       border-radius: 20px; /* Define o raio da borda para arredondar os cantos */
     }
@@ -45,7 +54,7 @@
       color: black; /* Cor do texto para notificações de fóruns */
     }
   </style>
-  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -295%); display: flex; align-items: center; z-index: -1;">
+  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -295%); display: flex; align-items: center;">
     <img src="{% static "images/logo.png" %}" alt="Scienceglobe Logo" style="width: 200px; margin-right: 10px;">
   </div>
   <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -750%);">
