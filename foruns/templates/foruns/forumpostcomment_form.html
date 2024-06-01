@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="position: absolute; left: 47%; transform: translateX(-50%); top: 230px;">
+    <div style="text-align: center; position: relative; z-index: 1200;">
+        <p>Poste seu comentário em: <a href="{% url 'forumpost-detail' forumpost.pk %}">{{forumpost.name}}</a></p>
+
+        <form action="" method="post" style="max-width: 500px; margin: 0 auto;">
+            {% csrf_token %}
+            <table style="width: 100%;">
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Submit" style="width: 100%; margin-top: 10px;" />
+        </form>
+    </div>
+</div>
+{% endblock %}

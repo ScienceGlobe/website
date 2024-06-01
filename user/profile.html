@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        .search-form {
+      text-align: center; /* Centraliza o formulário */
+      position: fixed; /* Fixa o formulário na parte inferior da página */
+      bottom: 780px; /* Distância do formulário ao fundo da página */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      height: 35px; /* Define a altura da barra de pesquisa */
+      z-index: -2;
+      width: calc(60% - 40px); /* Largura da barra de pesquisa */
+        }
+        .container {
+            margin-top: 220px; /* Margem superior de 20 pixels */
+            margin-left: -50px; /* Margem esquerda de 10 pixels */
+        }
+
+        h1 {
+            font-size: 36px; /* Tamanho da fonte do título de 24 pixels */
+            margin-top: 10px; /* Margem superior do título de 10 pixels */
+            margin-bottom: 10px; /* Margem inferior do título de 10 pixels */
+        }
+
+        p {
+            font-size: 24px; /* Tamanho da fonte do parágrafo de 16 pixels */
+            margin-bottom: 10px; /* Margem inferior do parágrafo de 10 pixels */
+        }
+
+        strong {
+            font-weight: bold; /* Deixa o texto em negrito */
+        }
+        .logo-image {
+            position: fixed;
+            top: 10%;
+            left: 90%;
+            transform: translate(-465%, -50%);
+            z-index: 1;
+          }
+          .logo-image img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Perfil do Usuário</h1>
+        <p><strong>Nome:</strong> {{ name }}</p>
+        <p><strong>Nome de Usuário:</strong> {{ username }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        
+        {% if user.is_superuser %}
+            <p><strong>Administrador:</strong> Sim</p>
+        {% else %}
+            <p><strong>Administrador:</strong> Não</p>
+        {% endif %}
+    </div>
+    <div class="logo-image">
+        <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
+      </div>
+{% endblock %}

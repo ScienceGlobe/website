@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        .results-container {
+            position: relative;
+            top: 210px;
+            left: -160px;
+            overflow-y: auto; /* Adicionando barra de rolagem vertical */
+            max-height: 70vh; /* Definindo a altura máxima para a barra de rolagem */
+            scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+        }
+        .logo-image {
+            position: fixed;
+            top: 10%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+          }
+          .logo-image img {
+            max-width: 100%;
+            height: auto;
+          }
+        .results-container {
+            position: relative;
+            top: 210px; /* ajuste o valor conforme necessário */
+            left: -160px;
+        
+        }
+    </style>
+    
+    <div class="results-container">
+        <h1>Resultados para "{{ query }}"</h1>
+        
+        {% if results.home_results %}
+            <h2>Resultados da Home</h2>
+            <ul>
+                {% for result in results.home_results %}
+                    <li>{{ result.title }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% if results.artigo_results %}
+            <h2>Resultados de Artigos</h2>
+            <ul>
+                {% for result in results.artigo_results %}
+                    <li>{{ result.title }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% if results.noticia_results %}
+            <h2>Resuldados de Noticias</h2>
+            <ul>
+                {% for result in results.noticia_results %}
+                    <li>{{ result.title }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% if results.forum_results %}
+            <h2>Resultados de Foruns</h2>
+            <ul>
+                {% for result in results.forum_results %}
+                    <li>{{ result.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% if not results %}
+            <p>Sem Resultados encontrados.</p>
+        {% endif %}
+        <div class="logo-image">
+            <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
+          </div>
+    </div>
+{% endblock %}
