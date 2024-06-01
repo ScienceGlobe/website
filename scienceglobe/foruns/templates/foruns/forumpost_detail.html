@@ -5,11 +5,11 @@
     .search-form {
       text-align: center; /* Centraliza o formulário */
       position: fixed; /* Fixa o formulário na parte inferior da página */
-      bottom: 780px; /* Distância do formulário ao fundo da página */
+      bottom: 830px; /* Distância do formulário ao fundo da página */
       left: 50%; /* Centraliza horizontalmente */
       transform: translateX(-50%); /* Centraliza horizontalmente */
       height: 35px; /* Define a altura da barra de pesquisa */
-      z-index: -1;
+      z-index: -2;
       width: calc(60% - 40px); /* Largura da barra de pesquisa */
     }
     .overlay {
@@ -62,13 +62,13 @@
 
     <div style="margin-top: 20px;">
       {% if user.is_authenticated %}
-      <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
+      <form action="{% url 'like_forum_post' forumpost.id %}" method="POST">
         {% csrf_token %}
         <button type="submit">
-          {% if user in comment.likes.all %}
-          Descurtir
+          {% if user in forumpost.likes.all %}
+            Descurtir
           {% else %}
-          Curtir
+            Curtir
           {% endif %}
         </button>
       </form>
@@ -83,15 +83,15 @@
         <hr>
         <p>{{ comment.author }} ({{ comment.post_date }}) - {{ comment.description }}</p>
         {% if user.is_authenticated %}
-              <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
-                {% csrf_token %}
-                <button type="submit">
-                  {% if user in comment.likes.all %}
-                  Descurtir
-                  {% else %}
-                  Curtir
-                  {% endif %}
-                </button>
+        <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
+          {% csrf_token %}
+          <button type="submit">
+            {% if user in comment.likes.all %}
+              Descurtir
+            {% else %}
+              Curtir
+            {% endif %}
+          </button>
         </form>
         {% endif %}
         <p class="like-counter"><strong>Likes:</strong> {{ comment.total_likes }}</p>
@@ -99,9 +99,9 @@
 
       <hr>
       {% if user.is_authenticated %}
-        <a href="{% url 'forumpost_comment' forumpost.id %}">adicione um comentário</a>
+        <a href="{% url 'forumpost_comment' forumpost.id %}">Add a new comment</a>
       {% else %}
-        <p><a href="{% url 'painel' %}">Login</a> para adicionar um novo comentário</p>
+        <p><a href="{% url 'painel' %}">Login</a> to add a new comment</p>
       {% endif %}
     </div>
   </div>
