@@ -2,6 +2,16 @@
 
 {% block content %}
   <style>
+    .search-form {
+      text-align: center; /* Centraliza o formulário */
+      position: fixed; /* Fixa o formulário na parte inferior da página */
+      bottom: 830px; /* Distância do formulário ao fundo da página */
+      left: 50%; /* Centraliza horizontalmente */
+      transform: translateX(-50%); /* Centraliza horizontalmente */
+      height: 35px; /* Define a altura da barra de pesquisa */
+      z-index: -2;
+      width: calc(60% - 40px); /* Largura da barra de pesquisa */
+    }
     .overlay {
       position: fixed;
       top: 0;
@@ -51,6 +61,7 @@
     <p style="white-space:pre-wrap;">{{ forumpost.description }}</p>
 
     <div style="margin-top: 20px;">
+      {% if user.is_authenticated %}
       <form action="{% url 'like_forum_post' forumpost.id %}" method="POST">
         {% csrf_token %}
         <button type="submit">
@@ -61,6 +72,7 @@
           {% endif %}
         </button>
       </form>
+      {% endif %}
       <p class="like-counter"><strong>Likes:</strong> {{ forumpost.total_likes }}</p>
     </div>
 
@@ -70,6 +82,7 @@
       {% for comment in comments %}
         <hr>
         <p>{{ comment.author }} ({{ comment.post_date }}) - {{ comment.description }}</p>
+        {% if user.is_authenticated %}
         <form action="{% url 'like_forum_comment' comment.id %}" method="POST">
           {% csrf_token %}
           <button type="submit">
@@ -80,6 +93,7 @@
             {% endif %}
           </button>
         </form>
+        {% endif %}
         <p class="like-counter"><strong>Likes:</strong> {{ comment.total_likes }}</p>
       {% endfor %}
 
