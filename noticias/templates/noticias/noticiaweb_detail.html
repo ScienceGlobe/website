@@ -2,6 +2,16 @@
 
 {% block content %}
   <style>
+    .search-form {
+        text-align: center; /* Centraliza o formulário */
+        position: fixed; /* Fixa o formulário na parte inferior da página */
+        bottom: 780px; /* Distância do formulário ao fundo da página */
+        left: 50%; /* Centraliza horizontalmente */
+        transform: translateX(-50%); /* Centraliza horizontalmente */
+        height: 35px; /* Define a altura da barra de pesquisa */
+        z-index: -2;
+        width: calc(60% - 40px); /* Largura da barra de pesquisa */
+        }
     .overlay {
       position: fixed;
       top: 0;

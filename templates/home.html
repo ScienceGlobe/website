@@ -44,10 +44,21 @@
       background-color: #53e2e1; /* Cor para notificações de fóruns */
       color: black; /* Cor do texto para notificações de fóruns */
     }
+    .logo-image {
+      position: fixed;
+      top: 10%;
+      left: 90%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+    .logo-image img {
+      max-width: 100%;
+      height: auto;
+    }
   </style>
-  <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -295%); display: flex; align-items: center; z-index: -1;">
-    <img src="{% static "images/logo.png" %}" alt="Scienceglobe Logo" style="width: 200px; margin-right: 10px;">
-  </div>
+    <div class="logo-image">
+      <img src="{% static 'images/logo.png' %}" alt="Nova Imagem Centralizada">
+    </div>
   <div class="text-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -750%);">
     <h1></h1>
   </div>
@@ -76,7 +87,7 @@
         </div>
         <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);"><a href="{% url 'home' %}">
           Outros
-          <div class="notification notification-artigos">000</div>
+          <div class="notification notification-artigos">0</div>
         </div>
       </div>
     </div>
@@ -100,7 +111,7 @@
         </div>
         <div class="text-square" style="position: absolute; top: 295px; left: calc(15% - 30px);">
           Outros
-          <div class="notification notification-noticias">000</div>
+          <div class="notification notification-noticias">0</div>
         </div>
       </div>
     </div>

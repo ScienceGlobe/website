@@ -2,11 +2,19 @@
 {% load static %}
 {% block content %}
     <style>
+        .results-container {
+            position: relative;
+            top: 210px;
+            left: -160px;
+            overflow-y: auto; /* Adicionando barra de rolagem vertical */
+            max-height: 70vh; /* Definindo a altura máxima para a barra de rolagem */
+            scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+        }
         .logo-image {
             position: fixed;
-            top: 8%;
+            top: 10%;
             left: 90%;
-            transform: translate(-452%, -50%);
+            transform: translate(-50%, -50%);
             z-index: -1;
           }
           .logo-image img {
